@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Details{% endblock %}
+
+{% block body %}
+
+    <h2>Nom : {{ materials.Nom }}</h2>
+    <h4>Prix : {{ materials.Prix }}</h4>
+    <h4>Quantité : {{ materials.Nombre }}</h4>
+    <h4>Créé le :{{ materials.CreatedAt | date('d/m/y') }} à {{ materials.CreatedAt | date('H:i')}} </h2>
+
+{% endblock %}

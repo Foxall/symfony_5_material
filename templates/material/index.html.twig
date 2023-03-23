@@ -1,0 +1,71 @@
+
+{% extends 'base.html.twig' %}
+
+{% block title %}Details{% endblock %}
+
+{% block body %}
+
+
+
+<h2>liste des Matériaux</h2>
+
+<table class="tab" border="1">
+    <tr>
+        <th class="top_case">id</th>
+        <th class="top_case">nom</th>
+        <th class="top_case">prix</th>
+        <th class="top_case">nombre</th>
+        <th class="top_case">date de création</th>
+        <th class="top_case"/>
+        <th class="top_case"/>
+    </tr>
+
+    {% for material in materials %}
+        <material>
+            <tr>
+                <th class="case_contenu">{{ material.id }}</th>
+                <th class="case_contenu">{{ material.Nom }}</th>
+                <th class="case_contenu">{{ material.Prix }}</th>
+                <th class="case_contenu">{{ material.Nombre }}</th>
+                <th class="case_contenu">{{ material.CreatedAt | date('d/m/y') }} à {{ material.CreatedAt | date('H:i')}} </th>
+                <th class="case_button">
+                    <button id="myBtn {{ material.id }}">Voir</button>
+                    <div id="myModal {{ material.id }}" class="modal">
+                        <div class="modal-content">
+                            <span class="close {{ material.id }}">&times;</span>
+                            <p> Nom: {{ material.Nom }}</p>
+                            <p> Prix: {{ material.Prix }}</p>
+                            <p> Quantité: {{ material.Nombre }}</p>
+                            <p> Créé le {{ material.CreatedAt | date('d/m/y') }} à {{ material.CreatedAt | date('H:i')}}</p>
+                            <a href="{{ path('pdf_generate', {'id': material.id}) }}"> <button>generate PDF</button></a>
+                        </div>
+                </th>
+                <th class="case_button">
+                    <a href="{{ path('modifier-material', {'id': material.id}) }}"> <button>modifier</button></a>
+                </th>
+            </tr>
+        <material>
+
+        <script>
+            var modal{{ material.id }} = document.getElementById("myModal {{ material.id }}");
+            var btn{{ material.id }} = document.getElementById("myBtn {{ material.id }}");
+            var span{{ material.id }} = document.getElementsByClassName("close {{ material.id }}")[0];
+            btn{{ material.id }}.onclick = function() {
+                modal{{ material.id }}.style.display = "block";
+            }
+            span{{ material.id }}.onclick = function() {
+                modal{{ material.id }}.style.display = "none";
+            }
+            window.onclick = function(event) {
+                if (event.target == modal) {
+                    modal{{ material.id }}.style.display = "none";
+                }
+            }
+        </script>
+    {% endfor %}
+</table>
+
+
+{% endblock %}
+
+

@@ -1,0 +1,30 @@
+
+
+{% extends 'base.html.twig' %}
+
+{% block body %}
+
+<h1> modifier materiel {{ materials.Nom}}</h1>
+
+{{ form_start(formMaterial)}}
+
+    <div class="form-group">
+        <label for="">Nom</label>
+        {{ form_widget(formMaterial.Nom) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Prix</label>
+        {{ form_widget(formMaterial.Prix) }}
+    </div>
+
+    <div class="form-group">
+        <label for="">Quantité</label>
+        {{ form_widget(formMaterial.Nombre) }}
+    </div>
+
+    <button type="submit" class="bnt bnt-succes">Modifier Matériel</button>
+
+    {{ form_end(formMaterial)}}
+
+{% endblock %}
