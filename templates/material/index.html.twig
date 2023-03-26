@@ -35,6 +35,7 @@
                             <p> Prix: {{ material.Prix }}</p>
                             <p> Quantité: {{ material.Nombre }}</p>
                             <p> Créé le {{ material.CreatedAt | date('d/m/y') }} à {{ material.CreatedAt | date('H:i')}}</p>
+                            <a href="{{ path('pdf_generate', {'id': material.id}) }}"> <button>generate PDF</button></a>
                         </div>
                 </th>
                 <th class="case_button">
