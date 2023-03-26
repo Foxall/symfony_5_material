@@ -74,7 +74,7 @@ class MaterialController extends AbstractController
     /**
      * @Route("/generate/{id}", name="pdf_generate")
      */
-    public function generatePdfAction($id)
+    public function generatePdfAction($id, Request $request, ObjectManager $manager)
         {
             $repo = $this->getDoctrine()->getRepository(Materials::class);
             $material = $repo->find($id);
