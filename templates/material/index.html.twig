@@ -5,7 +5,7 @@
 
 {% block body %}
 
-<table id="example" class="display">
+<table id="example" class="table table-striped table-bordered">
     <thead>
         <tr>
             <th >id</th>
@@ -21,15 +21,15 @@
     {% for material in materials %}
         <material>
             <tr>
-                <th ">{{ material.id }}</th>
-                <th ">{{ material.Nom }}</th>
-                <th ">{{ material.Prix }}</th>
-                <th ">{{ material.Nombre }}</th>
-                <th ">{{ material.CreatedAt | date('d/m/y') }} à {{ material.CreatedAt | date('H:i')}} </th>
+                <th >{{ material.id }}</th>
+                <th >{{ material.Nom }}</th>
+                <th >{{ material.Prix }}</th>
+                <th >{{ material.Nombre }}</th>
+                <th >{{ material.CreatedAt | date('d/m/y') }} à {{ material.CreatedAt | date('H:i')}} </th>
                 <th class="case_button">
                     <button id="myBtn {{ material.id }}">Voir</button>
                     <div id="myModal {{ material.id }}" class="modal">
-                        <div class="modal-content">
+                      <div class="modal-content">
                             <span class="close {{ material.id }}">&times;</span>
                             <p> Nom: {{ material.Nom }}</p>
                             <p> Prix: {{ material.Prix }}</p>
@@ -70,8 +70,12 @@
     <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.min.css">
 
     <script>
-        $(document).ready(function() {
-            $('#example').DataTable();
+        $(document).ready(function () {
+            $('#example').dataTable( {
+             "columnDefs": [
+                { "targets": [2], "searchable": false }
+            ]
+            });
         });
     </script>
 {% endblock %}
